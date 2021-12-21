@@ -1,9 +1,11 @@
 package br.com.naval.batalha;
 
+import br.com.naval.batalha.view.JogoView;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-	System.out.println("Hello Rodrigo");
+        JogoView jogo = new JogoView();
+        jogo.iniciar();
     }
 }
