@@ -1,5 +1,7 @@
 package br.com.naval.batalha.domain;
 
+import br.com.naval.batalha.view.ScreenUtil;
+
 import java.util.Arrays;
 
 public class Tabuleiro {
@@ -20,21 +22,25 @@ public class Tabuleiro {
     }
 
     public boolean posicionarNavios(int posicaoX, int posicaoY) {
-        boolean isPosicaoValida = false;
+        boolean isPosicaoValida;
         if (this.tabuleiro[posicaoX][posicaoY].equals(" ")) {
             this.tabuleiro[posicaoX][posicaoY] = "N";
             isPosicaoValida = true;
         } else {
-            System.out.println("Posição informada já utilizada, tente posicionar o navio em outro local!");
             isPosicaoValida = false;
         }
         return isPosicaoValida;
     }
 
-    public void imPrimimirTabuleiro(String nomeJogador) {
+    public void imPrimimirTabuleiro(String nomeJogador, int quantidadeNavios, boolean posicionandoNavios) {
         String[] coordenadas = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "j"};
         System.out.println("---------------------------------------------");
-        System.out.println(nomeJogador);
+        ScreenUtil.printTextLine(nomeJogador, true);
+        if (posicionandoNavios) {
+            System.out.printf("Navios não posicionados: %d%n", quantidadeNavios);
+        } else {
+            System.out.printf("Navios restantes: %d%n", quantidadeNavios);
+        }
         System.out.println("---------------------------------------------");
         System.out.println("|   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |");
         System.out.println("---------------------------------------------");
@@ -44,5 +50,9 @@ public class Tabuleiro {
             System.out.println(linhaTabuleiro);
             System.out.println("---------------------------------------------");
         }
+    }
+
+    public void marcarJogada(Coordenada coordenada, String token) {
+        this.tabuleiro[coordenada.x][coordenada.y] = token;
     }
 }

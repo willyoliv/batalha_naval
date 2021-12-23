@@ -13,7 +13,6 @@ public class JogoView {
         JogadorView jogadorView = new JogadorView();
         jogadorView.criarJogador();
         Jogador jogador = jogadorView.preencherTabuleiro();
-        jogador.getTabuleiro().imPrimimirTabuleiro(jogador.getName());
         jogo = new Jogo(jogador);
         jogo.IniciarJogo();
     }

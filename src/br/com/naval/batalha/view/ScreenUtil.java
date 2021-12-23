@@ -6,7 +6,7 @@ public class ScreenUtil {
         printTextLine(text, 80, false, ' ');
     }
     public static void printTextLine(String text, boolean centerInScreen) {
-        printTextLine(text, 80, centerInScreen, ' ');
+        printTextLine(text, 45, centerInScreen, ' ');
     }
     public static void printTextLine(String text, int lineLen) {
         printTextLine(text, lineLen, false, ' ');
