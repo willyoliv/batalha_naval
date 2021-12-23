@@ -25,41 +25,12 @@ public class JogadorView {
     }
 
     public Jogador preencherTabuleiro() {
-        Tabuleiro tabuleiro = jogador.getTabuleiro();
         System.out.println("#".repeat(45));
         System.out.println("VAMOS PREENCHER O TABULEIRO");
-        for (int i = 0; i < jogador.getNumeroNavios(); i++) {
-            tabuleiro.imPrimimirTabuleiro(jogador.getName());
-            boolean isPosicaoValida;
-            do {
-                int x = askPosicao("Informe a coordenada eixo X");
-                int y = askPosicao("Informe a coordenada eixo Y");
-                isPosicaoValida = tabuleiro.posicionarNavios(x, y);
-                tabuleiro.imPrimimirTabuleiro(jogador.getName());
-            } while (!isPosicaoValida);
-        }
+        this.jogador.posicionarNavios();
         return this.jogador;
     }
 
-    private int askPosicao(String mensagem) {
-        boolean isNumeroInvalido = true;
-        int numero = 0;
-        while (isNumeroInvalido) {
-            System.out.println(mensagem);
-            try {
-                numero = new Scanner(System.in).nextInt();
-            } catch (InputMismatchException inputMismatchException) {
-                System.out.println("Caracter informado não corresponde a um número, tente novamente!");
-                continue;
-            }
-            if (numero >= 0 & numero < 10) {
-                isNumeroInvalido = false;
-            } else {
-                System.out.println("Tente um valor maior ou igual a ZERO e menor que DEZ!");
-            }
-        }
-        return numero;
-    }
 
 
 }
