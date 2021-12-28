@@ -1,8 +1,11 @@
 package br.com.naval.batalha;
 
+import br.com.naval.batalha.view.InputUtil;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Heelo");
+        InputUtil tiro = new InputUtil();
+        tiro.askTiro();
     }
 }
