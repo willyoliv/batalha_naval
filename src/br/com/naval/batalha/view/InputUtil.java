@@ -10,7 +10,7 @@ public class InputUtil {
     public void askTiro(){
         System.out.println("Qual a posição do tiro? (Ex: a0 ou A0)");
         String entrada = input.next().toLowerCase();
-        if (entrada.length() > 2){
+        if (entrada.length() != 2){
             System.out.println("Entrada Inválida, Tente Novamente! (O tiro deve apenas ter linha e coluna)");
             askTiro();
         }else if(!LINHAS.contains(Character.toString(entrada.charAt(0)))
