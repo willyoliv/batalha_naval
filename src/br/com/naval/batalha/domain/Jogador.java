@@ -122,4 +122,65 @@ public class Jogador {
     public void afundarNavio() {
         this.numeroNavios--;
     }
+
+    public void posicionarNaviosAleatoreamente() {
+        int quantidadeInicialNavios = this.numeroNavios;
+        for (int i = 0; i < quantidadeInicialNavios; i++) {
+            boolean isPosicaoValida;
+            do {
+                int linha = gerarNumeroAleatorio();
+                int coluna = gerarNumeroAleatorio();
+                isPosicaoValida = tabuleiro.posicionarNavios(linha, coluna);
+                if (isPosicaoValida) {
+                    this.numeroNavios--;
+                }
+            } while (!isPosicaoValida);
+        }
+    }
+
+    public void posicionarNavios() {
+        int quantidadeInicialNavios = this.numeroNavios;
+        for (int i = 0; i < quantidadeInicialNavios; i++) {
+            boolean isPosicaoValida;
+            do {
+                this.tabuleiro.imPrimimirTabuleiro(this.name, this.numeroNavios);
+                int x = perguntarPosicao("Informe a coordenada eixo X");
+                int y = perguntarPosicao("Informe a coordenada eixo Y");
+                isPosicaoValida = this.tabuleiro.posicionarNavios(x, y);
+                if (isPosicaoValida) {
+                    this.numeroNavios--;
+                } else {
+                    System.out.println("Posição informada já utilizada, tente posicionar o navio em outro local!");
+                }
+            } while (!isPosicaoValida);
+        }
+    }
+
+    private int gerarNumeroAleatorio() {
+        int valorMinimo = 0;
+        int valorMaximo = 9;
+        Random ran = new Random();
+        int numero = ran.nextInt(valorMaximo) + valorMinimo;
+        return numero;
+    }
+
+    private int perguntarPosicao(String mensagem) {
+        boolean isNumeroInvalido = true;
+        int numero = 0;
+        while (isNumeroInvalido) {
+            System.out.println(mensagem);
+            try {
+                numero = new Scanner(System.in).nextInt();
+            } catch (InputMismatchException inputMismatchException) {
+                System.out.println("Caracter informado não corresponde a um número, tente novamente!");
+                continue;
+            }
+            if (numero >= 0 & numero < 10) {
+                isNumeroInvalido = false;
+            } else {
+                System.out.println("Tente um valor maior ou igual a ZERO e menor que DEZ!");
+            }
+        }
+        return numero;
+    }
 }
