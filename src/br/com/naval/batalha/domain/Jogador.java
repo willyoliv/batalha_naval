@@ -4,7 +4,9 @@ public class Jogador {
     String nome;
 
     //Constructor
-    public Jogador() {}
+    public Jogador() {
+
+    }
 
     public String getNome() {
         return nome;
