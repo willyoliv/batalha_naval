@@ -11,40 +11,49 @@ public class JogoView {
         this.input = new Scanner(System.in);
     }
 
+    
     public void start() {
-        headerWelcome();
+        header();
         chooseOptions();
     }
     
-    private void headerWelcome() {
+    
+    private void header() {
+
+        for (int i = 0; i < 30; i++) {
+            System.out.println();
+        }
+
         System.out.print("#############################################\n");
         System.out.print("##############$$$$$$$$$$$$$$$$$##############\n");
         System.out.print("##############$ BATALHA NAVAL $##############\n");
         System.out.print("##############$$$$$$$$$$$$$$$$$##############\n");
-        System.out.print("#############################################\n\n\n");
+        System.out.print("#############################################\n\n\n\n\n\n");
 
     }
 
+    
     private void chooseOptions() {
-        System.out.print("#######---MENU---#####\n");
+        System.out.print("#######---MENU---#####\n\n");
         System.out.print("[UTILIZE O NÚMERO CORRESPONDENTE A OPÇÃO]\n");
-        System.out.println("[1] - SOBRE O JOGO.");
-        System.out.println("[2] - INICIAR JOGO.");
+        System.out.println("[1] - INICIAR JOGO.");
+        System.out.println("[2] - SOBRE O JOGO.");
         System.out.println("[3] - SOBRE O PROJETO.");
 
         int option;
         option = Integer.parseInt(input.nextLine());
+        
         switch (option) {
             case 1:
-                aboutGame();
+                //MÉTODO PARA INICIAR O JOGO AQUI.
                 break;
 
             case 2:
-                //método para iniciar o jogo aqui.
+                aboutGame();
                 break;
 
             case 3:
-                //método para exibir sobre o projeto aqui.
+                aboutProject();
                 break;
 
             default:
@@ -54,15 +63,18 @@ public class JogoView {
 
     }
 
+    
     private void aboutGame() {
+
         for (int i = 0; i < 30; i++) {
             System.out.println();
         }
+
         System.out.print("#############################################\n");
         System.out.print("##############$$$$$$$$$$$$$$$$$##############\n");
         System.out.print("##############$ SOBRE DO JOGO $##############\n");
         System.out.print("##############$$$$$$$$$$$$$$$$$##############\n");
-        System.out.print("#############################################\n\n");
+        System.out.print("#############################################\n\n\n\n\n\n");
 
         System.out.print("Batalha naval é um jogo de tabuleiro de dois jogadores, no qual os jogadores têm de\n" +
                          "adivinhar em quais quadrados estão os navios do oponente.\n" +
@@ -80,7 +92,49 @@ public class JogoView {
 
         System.out.print("Após os navios terem sido posicionados o jogo continua numa série de turnos.\n" +
                          "Em cada turno, um jogador diz um quadrado, o qual é identificado pela letra e número,\n"+
-                         "na grelha do oponente.");
+                         "na grelha do oponente.\n\n\n");
+
+        
+        System.out.println("Pressione QUALQUER tecla e aperter ENTER para voltar ao Menu. ");
+
+        String option;
+        option = input.nextLine();
+        
+        switch (option) {                
+            default:               
+                start();
+        }                 
+    }
+
+    
+    private void aboutProject() {
+        for (int i = 0; i < 30; i++) {
+            System.out.println();
+        }
+
+        System.out.print("################################################\n");
+        System.out.print("##############$$$$$$$$$$$$$$$$$#################\n");
+        System.out.print("##############$ SOBRE DO PROJETO $##############\n");
+        System.out.print("##############$$$$$$$$$$$$$$$$$#################\n");
+        System.out.print("################################################\n\n\n\n\n\n");
+
+        System.out.print("- PROJETO CRIADO PARA PRATICAR OS CONCEITOS BÁSICOS DA LINGUAGEM DE PROGRAMAÇÃO JAVA.\n\n");
+        System.out.print("- ESTE PROJETO FAZ PARTE DO CONTEÚDO DIDÁTICO DO PROGRAMA SANTANDER CODERS - UMA PARCERIA DO BANCO SANTANDER COM A ESCOLA DE PROGRAMAÇÃO LET'S CODE.\n\n");
+        System.out.print("- DOCENTE: CRISTIANO NEVES.\n\n");
+        System.out.print("- DISCENTES:\n");
+        System.out.print("RIVAIL ARAÚJO.\n");
+        System.out.print("RODRIGO SOUZA.\n");
+        System.out.print("WILLY OLIVEIRA.\n\n\n");
+
+        System.out.println("Pressione QUALQUER tecla e aperter ENTER para voltar ao Menu. ");
+
+        String option;
+        option = input.nextLine();
+        
+        switch (option) {                
+            default:               
+                start();
+        }
     }
 
 }
