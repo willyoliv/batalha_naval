@@ -17,9 +17,7 @@ public class Jogo {
         this.computador.posicionarNaviosAleatoreamente();
         Tabuleiro tabuleiroJogador = this.jogador.getTabuleiro();
         Tabuleiro tabuleiroComputador = this.computador.getTabuleiro();
-//        tabuleiroJogador.imPrimimirTabuleiro(this.jogador.getName(), this.jogador.getNumeroNavios(), false);
         tabuleiroComputador.imPrimimirTabuleiro(this.computador.getName(), this.computador.getNumeroNavios(), false);
-//        boolean hasGanhador = false;
         int numeroDeRodadas = 0;
         while (true) {
             Coordenada coordenada = this.jogador.realizarJogada();
@@ -28,7 +26,7 @@ public class Jogo {
                 this.computador.afundarNavio();
             }
 
-            if (numeroDeRodadas >= 9) {
+            if (numeroDeRodadas >= 10) {
                 if (verificarGanhador()) {
                     break;
                 }
@@ -43,7 +41,7 @@ public class Jogo {
             tabuleiroJogador.imPrimimirTabuleiro(this.jogador.getName(), this.jogador.getNumeroNavios(), false);
             tabuleiroComputador.imPrimimirTabuleiro(this.computador.getName(), this.computador.getNumeroNavios(), false);
 
-            if (numeroDeRodadas >= 9) {
+            if (numeroDeRodadas >= 10) {
                 if (verificarGanhador()) {
                     break;
                 }
@@ -66,7 +64,7 @@ public class Jogo {
             }
             acertou = true;
         } else {
-            if (tokenTabuleiro1.equals("N")) {
+            if (tokenTabuleiro1.equals("N") || tokenTabuleiro1.equals("n")) {
                 tabuleiro1.marcarJogada(coordenada, "n");
             } else {
                 tabuleiro1.marcarJogada(coordenada, "-");

@@ -1,16 +1,17 @@
 package br.com.naval.batalha.domain;
 
-import java.util.InputMismatchException;
+import br.com.naval.batalha.view.InputUtil;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Jogador {
     private String name;
     private int numeroNavios;
     private Tabuleiro tabuleiro;
+    private InputUtil inputTiros;
 
     public Jogador() {
         this.tabuleiro = new Tabuleiro();
+        this.inputTiros = new InputUtil();
         this.numeroNavios = 10;
     }
 
@@ -23,10 +24,6 @@ public class Jogador {
     public Tabuleiro getTabuleiro() {
         return tabuleiro;
     }
-
-//    public void setTabuleiro(Tabuleiro tabuleiro) {
-//        this.tabuleiro = tabuleiro;
-//    }
 
     public String getName() {
         return name;
@@ -42,9 +39,6 @@ public class Jogador {
         return numeroNavios;
     }
 
-//    public void setNumeroNavios(int numeroNavios) {
-//        this.numeroNavios = numeroNavios;
-//    }
 
     public void posicionarNaviosAleatoreamente() {
         int quantidadeInicialNavios = this.numeroNavios;
@@ -60,19 +54,17 @@ public class Jogador {
 
     public void posicionarNavios() {
         int quantidadeInicialNavios = this.numeroNavios;
+        InputUtil inputNavios = new InputUtil();
+        int[] coords;
         for (int i = 0; i < this.numeroNavios; i++) {
-            boolean isPosicaoValida;
-            do {
-                this.tabuleiro.imPrimimirTabuleiro(this.name, quantidadeInicialNavios, true);
-                int x = perguntarPosicao("Informe a coordenada eixo X");
-                int y = perguntarPosicao("Informe a coordenada eixo Y");
-                isPosicaoValida = this.tabuleiro.posicionarNavios(x, y);
-                if (isPosicaoValida) {
-                    quantidadeInicialNavios--;
-                } else {
-                    System.out.println("Posição informada já utilizada, tente posicionar o navio em outro local!");
-                }
-            } while (!isPosicaoValida);
+            this.tabuleiro.imPrimimirTabuleiro(this.name, quantidadeInicialNavios, true);
+            coords = inputNavios.askCoord("posNavio");
+            int x = coords[0];
+            int y = coords[1];
+            System.out.println("Coord X" + coords[0]);
+            System.out.println("Coord Y" + coords[1]);
+            this.tabuleiro.posicionarNavios(x, y);
+            quantidadeInicialNavios--;
         }
     }
 
@@ -84,30 +76,12 @@ public class Jogador {
         return numero;
     }
 
-    private int perguntarPosicao(String mensagem) {
-        boolean isNumeroInvalido = true;
-        int numero = 0;
-        while (isNumeroInvalido) {
-            System.out.println(mensagem);
-            try {
-                numero = new Scanner(System.in).nextInt();
-            } catch (InputMismatchException inputMismatchException) {
-                System.out.println("Caracter informado não corresponde a um número, tente novamente!");
-                continue;
-            }
-            if (numero >= 0 & numero < 10) {
-                isNumeroInvalido = false;
-            } else {
-                System.out.println("Tente um valor maior ou igual a ZERO e menor que DEZ!");
-            }
-        }
-        return numero;
-    }
-
     public Coordenada realizarJogada() {
         this.tabuleiro.imPrimimirTabuleiro(this.name, this.numeroNavios, false);
-        int x = perguntarPosicao("Informe a coordenada eixo X");
-        int y = perguntarPosicao("Informe a coordenada eixo Y");
+        int[] coords;
+        coords = inputTiros.askCoord("tiro");
+        int x = coords[0];
+        int y = coords[1];
         Coordenada coordenada = new Coordenada(x, y);
         return coordenada;
     }
