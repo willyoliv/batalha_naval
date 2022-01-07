@@ -1,10 +1,10 @@
 package br.com.naval.batalha.domain;
 
-public class Coordenada {
+public class Coordenadas {
     public int x;
     public int y;
 
-    public Coordenada(int x, int y) {
+    public Coordenadas(int x, int y) {
         this.x = x;
         this.y = y;
     }

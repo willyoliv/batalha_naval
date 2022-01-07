@@ -1,6 +1,6 @@
 package br.com.naval.batalha.domain;
 
-import br.com.naval.batalha.view.InputUtil;
+import br.com.naval.batalha.util.InputUtil;
 import java.util.Random;
 
 public class Jogador {
@@ -57,12 +57,10 @@ public class Jogador {
         InputUtil inputNavios = new InputUtil();
         int[] coords;
         for (int i = 0; i < this.numeroNavios; i++) {
-            this.tabuleiro.imPrimimirTabuleiro(this.name, quantidadeInicialNavios, true);
+            this.tabuleiro.imPrimimirTabuleiro(this.name, quantidadeInicialNavios, -1,true);
             coords = inputNavios.askCoord("posNavio");
             int x = coords[0];
             int y = coords[1];
-            System.out.println("Coord X" + coords[0]);
-            System.out.println("Coord Y" + coords[1]);
             this.tabuleiro.posicionarNavios(x, y);
             quantidadeInicialNavios--;
         }
@@ -76,20 +74,20 @@ public class Jogador {
         return numero;
     }
 
-    public Coordenada realizarJogada() {
-        this.tabuleiro.imPrimimirTabuleiro(this.name, this.numeroNavios, false);
+    public Coordenadas realizarJogada(int quantidadeNaviosDoInimigo) {
+        this.tabuleiro.imPrimimirTabuleiro(this.name, this.numeroNavios, quantidadeNaviosDoInimigo,false);
         int[] coords;
         coords = inputTiros.askCoord("tiro");
         int x = coords[0];
         int y = coords[1];
-        Coordenada coordenada = new Coordenada(x, y);
+        Coordenadas coordenada = new Coordenadas(x, y);
         return coordenada;
     }
 
-    public Coordenada realizarJogadaComputador() {
+    public Coordenadas realizarJogadaComputador() {
         int x = gerarNumeroAleatorio();
         int y = gerarNumeroAleatorio();
-        Coordenada coordenada = new Coordenada(x, y);
+        Coordenadas coordenada = new Coordenadas(x, y);
         return coordenada;
     }
 

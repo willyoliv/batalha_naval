@@ -13,7 +13,11 @@ public class JogadorView {
     }
 
     private String askNome() {
-        System.out.println("Informe seu nome!");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("#".repeat(45));
+        System.out.println("ANTES DO JOGO INICIAR POR FAVOR INFORME UM NOME DE USUÁRIO!");
         String nome = new Scanner(System.in).nextLine();
         if (nome.isBlank()) {
             return askNome();
@@ -22,12 +26,12 @@ public class JogadorView {
     }
 
     public Jogador preencherTabuleiro() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("#".repeat(45));
         System.out.println("VAMOS PREENCHER O TABULEIRO");
         this.jogador.posicionarNavios();
         return this.jogador;
     }
-
-
-
 }

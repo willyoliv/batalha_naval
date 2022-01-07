@@ -12,7 +12,7 @@ public class JogoView {
 
     //Constructor
     public JogoView() {
-        this.input = new Scanner(System.in);
+//        this.input = new Scanner(System.in);
     }
 
 
@@ -24,15 +24,15 @@ public class JogoView {
 
     private void header() {
 
-        /*for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 8; i++) {
             System.out.println();
-        }*/
+        }
 
         System.out.print("#############################################\n");
         System.out.print("##############$$$$$$$$$$$$$$$$$##############\n");
         System.out.print("##############$ BATALHA NAVAL $##############\n");
         System.out.print("##############$$$$$$$$$$$$$$$$$##############\n");
-        System.out.print("#############################################\n\n\n\n\n\n");
+        System.out.print("#############################################\n\n\n");
 
     }
 
@@ -46,6 +46,7 @@ public class JogoView {
         System.out.println("[0] - SAIR.");
 
         String option;
+        this.input = new Scanner(System.in);
         option = input.next();
 
         switch (option) {
@@ -68,6 +69,7 @@ public class JogoView {
                 break;
             case "0":
                 System.exit(0);
+                this.input.close();
                 break;
 
             default:
@@ -80,7 +82,7 @@ public class JogoView {
 
     private void aboutGame() {
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 8; i++) {
             System.out.println();
         }
 
@@ -88,7 +90,7 @@ public class JogoView {
         System.out.print("##############$$$$$$$$$$$$$$$$$##############\n");
         System.out.print("##############$ SOBRE DO JOGO $##############\n");
         System.out.print("##############$$$$$$$$$$$$$$$$$##############\n");
-        System.out.print("#############################################\n\n\n\n\n\n");
+        System.out.print("#############################################\n\n\n");
 
         System.out.print("Batalha naval é um jogo de tabuleiro de dois jogadores, no qual os jogadores têm de\n" +
                 "adivinhar em quais quadrados estão os navios do oponente.\n" +
@@ -112,6 +114,7 @@ public class JogoView {
         System.out.println("Pressione QUALQUER tecla e aperter ENTER para voltar ao Menu. ");
 
         String option;
+        this.input = new Scanner(System.in);
         option = input.nextLine();
 
         switch (option) {
@@ -122,7 +125,7 @@ public class JogoView {
 
 
     private void aboutProject() {
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 8; i++) {
             System.out.println();
         }
 
@@ -130,7 +133,7 @@ public class JogoView {
         System.out.print("##############$$$$$$$$$$$$$$$$$#################\n");
         System.out.print("##############$ SOBRE DO PROJETO $##############\n");
         System.out.print("##############$$$$$$$$$$$$$$$$$#################\n");
-        System.out.print("################################################\n\n\n\n\n\n");
+        System.out.print("################################################\n\n\n");
 
         System.out.print("- PROJETO CRIADO PARA PRATICAR OS CONCEITOS BÁSICOS DA LINGUAGEM DE PROGRAMAÇÃO JAVA.\n\n");
         System.out.print("- ESTE PROJETO FAZ PARTE DO CONTEÚDO DIDÁTICO DO PROGRAMA SANTANDER CODERS - UMA PARCERIA DO BANCO SANTANDER COM A ESCOLA DE PROGRAMAÇÃO LET'S CODE.\n\n");
@@ -143,6 +146,7 @@ public class JogoView {
         System.out.println("Pressione QUALQUER tecla e aperter ENTER para voltar ao Menu. ");
 
         String option;
+        this.input = new Scanner(System.in);
         option = input.nextLine();
 
         switch (option) {

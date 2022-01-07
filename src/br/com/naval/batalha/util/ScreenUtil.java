@@ -1,4 +1,4 @@
-package br.com.naval.batalha.view;
+package br.com.naval.batalha.util;
 
 public class ScreenUtil {
 
