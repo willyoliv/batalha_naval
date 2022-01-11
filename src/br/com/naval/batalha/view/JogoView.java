@@ -12,7 +12,6 @@ public class JogoView {
 
     //Constructor
     public JogoView() {
-//        this.input = new Scanner(System.in);
     }
 
 
